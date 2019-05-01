@@ -61,7 +61,7 @@ class CampaignsClient implements CampaignsClientContract
      */
     public function getMailingLists(string $sort = 'desc', int $fromIndex = null, int $range = null): object
     {
-        return $this->getRequest('getmailinglists', [
+        return $this->postRequest('getmailinglists', [
             'sort' => $sort,
             'fromindex' => $fromIndex,
             'range' => $range,
@@ -498,6 +498,17 @@ class CampaignsClient implements CampaignsClientContract
         }
 
         return $this->client->post($this->getEndpoint($endPoint), $this->headers);
+    }
+
+    private function get($endPoint)
+    {
+        if ($this->requestAsync === true) {
+            $promise = $this->client->getAsync($this->getEndpoint($endPoint), $this->headers);
+
+            return (is_callable($this->requestCallback) ? $promise->then($this->requestCallback) : $promise);
+        }
+
+        return $this->client->get($this->getEndpoint($endPoint), $this->headers);
     }
 
     /**
