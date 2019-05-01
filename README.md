@@ -53,7 +53,7 @@ Hit to your Zoho campaigns [Settings](https://campaigns.zoho.com/campaigns/home.
 ```
 'zoho' => [
     'campaigns' => [
-        'auth_token' => env('ZOHO_CAMPAIGNS_AUTH_TOKEN,'')
+        'auth_token' => env('ZOHO_CAMPAIGNS_AUTH_TOKEN', ''),
     ],
 ]
 ```
