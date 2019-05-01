@@ -225,7 +225,7 @@ class CampaignsClient implements CampaignsClientContract
      * for the existing leads in a private list only.
      *
      * @param string $listKey     List Key to send a subscription mail to subscribers
-     * @param string $contactInfo Provide email id to be moved to Do-Not-Mail registry.
+     * @param string $contactInfo Subscriber email with other fields. Format of this value depends on the request URL.
      * @param null   $sources     Subscriber source can be added.
      *
      * @return object
