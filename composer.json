@@ -1,0 +1,56 @@
+{
+  "name": "liliom/laravel-zoho-campaigns",
+  "description": " A library to integrate with Zoho Campaigns v1.0 API. Build and manage campaigns & contact lists.",
+  "keywords": [
+    "laravel",
+    "zoho",
+    "campaigns",
+    "zoho campaigns",
+    "newsletter",
+    "contacts",
+    "subscribers",
+    "subscriptions",
+    "subscribe form",
+    "signup forms",
+    "api"
+  ],
+  "require": {
+    "php": "^7.1.3",
+    "ext-curl": "*",
+    "guzzlehttp/guzzle": "^6.2"
+  },
+  "require-dev": {
+    "laravel/framework": ">=5.3"
+  },
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/liliomlab/zoho-campaigns/issues",
+    "source": "https://github.com/liliomlab/zoho-campaigns"
+  },
+  "authors": [
+    {
+      "name": "Mohammad Kawsara",
+      "email": "mkwsra@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Liliom\\Zoho\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Liliom\\Zoho\\Campaigns\\CampaignsServiceProvider"
+      ],
+      "aliases": {
+        "Campaigns": "Liliom\\Zoho\\Campaigns\\CampaignsFacade"
+      }
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
