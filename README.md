@@ -67,9 +67,10 @@ ZOHO_CAMPAIGNS_AUTH_TOKEN={YOUR_AUTH_TOKEN}
 ---
 ## Usage
 
-#### List Management:  
+#### 1. List Management:  
 
 Fetch the mailing lists.
+`\Campaigns::getMailingLists();`
 ```php
     /**
      * @param string   $sort      [asc/desc]
@@ -88,6 +89,7 @@ Fetch the mailing lists.
 
  
 Advanced details include all data like subscriber details, stats and complete details about campaigns sent to this mailing list. Using this API, you can get the list's advanced details. 
+`\Campaigns::getListAdvancedDetails();`
 ```php
     /**
      * @param string   $listKey    List Key to send a subscription mail to contacts.
@@ -108,6 +110,7 @@ Advanced details include all data like subscriber details, stats and complete de
 
  
 Fetch the mailing lists. 
+`\Campaigns::getListSubscribers();`
 ```php
     /**
      * @param string   $listKey   List Key to send a subscription mail to contacts.
@@ -130,6 +133,7 @@ Fetch the mailing lists.
 
  
 Fetch subscriber fields to get profile information of the subscribers. Using this API, you can get the list of all subscriber fields.
+`\Campaigns::getAllSubscriberFields();`
 ```php
     /**
      * @param string $type xml (or) json
@@ -143,6 +147,7 @@ Fetch subscriber fields to get profile information of the subscribers. Using thi
 
  
 Get the segment details by using our API. 
+`\Campaigns::getSegmentDetails();`
 ```php
     /**
      * @param string $listKey List Key to send a subscription mail to contacts.
@@ -159,6 +164,7 @@ Get the segment details by using our API.
 
  
 Using this API, you can get the segment subscribers along with their relevant details like first name, last name, time when they were added, company and their phone number. 
+`\Campaigns::getSegmentContacts();`
 ```php
     /**
      * @param int $cvId You will get cvid from @method getMailingLists().
@@ -173,6 +179,7 @@ Using this API, you can get the segment subscribers along with their relevant de
 
  
 Updating a list can be to rename a list or to associate a signup form to the list. Using this API, you can make changes in mailing lists.
+`\Campaigns::updateListDetails();`
 ```php
     /**
      * @param string $listKey     List Key to send a subscription mail to contacts.
@@ -191,6 +198,7 @@ Updating a list can be to rename a list or to associate a signup form to the lis
 
  
 Using this API, you can delete a mailing list. All you need to provide is the list key and choose whether to delete all list subscribers from the organization or remove them only from the list. 
+`\Campaigns::deleteMailingList();`
 ```php
     /**
      * @param string $listKey        List Key to send a subscription mail to subscribers.
@@ -207,7 +215,8 @@ Using this API, you can delete a mailing list. All you need to provide is the li
 
  
 You don’t have to research on how effective a list has been or how much reach does a particular list measure. Find out using our API Authentication Token to find out the number of subscribers in a list. 
-```php    
+`\Campaigns::listSubscribersCount();`
+```php
     /**
      * @param string $listKey List Key to send a subscription mail to subscribers
      * @param string $status  [active|unsub|bounce|spam]
@@ -225,6 +234,7 @@ You don’t have to research on how effective a list has been or how much reach 
 Users can subscribe to a list without using the signup form or by getting added by another user. 
 They can subscribe using this API and the user added will be notified.
 Remember that, using this API, you can update your subscriber details for the existing leads in a private list only. 
+`\Campaigns::listSubscribe();`
 ```php
     /**
      * @param string $listKey     List Key to send a subscription mail to subscribers
@@ -244,6 +254,7 @@ Remember that, using this API, you can update your subscriber details for the ex
  
 Disinterested leads in your list? Never mind, all you need to do is unsubscribe them.
 Using this API, you can unsubscribe leads and they will be notified. 
+`\Campaigns::listUnsubscribe();`
 ```php
     /**
      * @param string $listKey     List Key to send a subscription mail to subscribers
@@ -262,7 +273,8 @@ Using this API, you can unsubscribe leads and they will be notified.
 You can move the contact to do-not-mail registry if you do not want to send emails further to that user
 or if they unsubscribe from the organization.
 Using this API, you can move/add contacts into "Do-Not-Mail" registry.
-```
+`\Campaigns::contactDoNotMail();`
+```php
     /**
      * @param string $contactInfo Provide email id to be moved to Do-Not-Mail registry.
      *
@@ -277,6 +289,7 @@ Using this API, you can move/add contacts into "Do-Not-Mail" registry.
  
 Did you know that you can also add leads not only to a new list but also existing lists using API?
 Well, using this API you can add leads in existing list. 
+`\Campaigns::addListSubscribersInBulk();`
 ```php
     /**
      * @param string $listKey  List Key to send a subscription mail to subscribers
@@ -293,6 +306,7 @@ Well, using this API you can add leads in existing list.
 
  
 Using this API, you can add new list and subscribers in the list without having to do this manually in the product UI. 
+`\Campaigns::addListAndContacts();`
 ```php
     /**
      * @param string $emailIds        Provide maximum of ten (10) EMAILID's comma (,) separately.
@@ -315,6 +329,7 @@ Using this API, you can add new list and subscribers in the list without having 
 
  
 Custom fields can be used to feed any type of information, set character limit and use them to save specific data. Using this API, you can create custom fields to store unique information about subscribers. 
+`\Campaigns::addCustomField();`
 ```php
     /**
      * @param string $fieldName   Alphanumeric
@@ -334,7 +349,8 @@ Custom fields can be used to feed any type of information, set character limit a
 
 
  
-Send your campaigns by addressing your subscribers by their first name, last name or anything else you find appropriate. Using this API, youcan create merge tags. 
+Send your campaigns by addressing your subscribers by their first name, last name or anything else you find appropriate. Using this API, youcan create merge tags.
+`\Campaigns::createMergeTag();`
 ```php
     /**
     * @param string $tagType     Custom
@@ -360,12 +376,12 @@ Send your campaigns by addressing your subscribers by their first name, last nam
 
 You may make asynchronous calls to Zoho Campaigns API, by prefixing your methods with the `async()` function:
 ```php
+\Campaigns::async(true) // async calls on, default value is true
+\Campaigns::async(false) // async calls off
 
-Campaigns::async(true) // async calls on, default value is true
-Campaigns::async(false) // async calls off
 
 // Later you can append the callback() to be executed when the response returns.
-Campaigns::async()->callback(Callable $requestCallback) 
+\Campaigns::async()->callback(Callable $requestCallback) 
 
 ``` 
 
@@ -378,14 +394,14 @@ For more details about the parameters please refer to the [Api Documentation](ht
 
 
 
-#### Campaign Management:
+#### 2. Campaign Management:
 This is a work in progress, and unfortunately it's not implement it for now, please be patient :see_no_evil:
 
 
-#### Extra Methods:
+#### 3. Extra Methods:
 ```php
 // To test credentials and make sure the Auth Token is configured correctly. 
-Campaigns::testCredentials();
+\Campaigns::testCredentials();
 ```
 
 ### Contributing
