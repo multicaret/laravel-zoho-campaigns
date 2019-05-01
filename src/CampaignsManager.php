@@ -39,7 +39,7 @@ class CampaignsManager
 
 
     /**
-     * Dynamically call methods on the Campaigns client.
+     * Dynamically call methods on the Zoho Campaigns client.
      *
      * @param $method
      * @param $parameters

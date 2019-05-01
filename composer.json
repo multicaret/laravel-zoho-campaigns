@@ -20,12 +20,13 @@
     "guzzlehttp/guzzle": "^6.2"
   },
   "require-dev": {
-    "laravel/framework": ">=5.3"
+    "laravel/framework": ">=5.3",
+    "guzzlehttp/guzzle": "^6.2"
   },
   "license": "MIT",
   "support": {
-    "issues": "https://github.com/liliomlab/zoho-campaigns/issues",
-    "source": "https://github.com/liliomlab/zoho-campaigns"
+    "issues": "https://github.com/liliomlab/laravel-zoho-campaigns/issues",
+    "source": "https://github.com/liliomlab/laravel-zoho-campaigns"
   },
   "authors": [
     {
@@ -35,7 +36,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Liliom\\Zoho\\": "src/"
+      "Liliom\\Zoho\\Campaigns\\": "src/"
     }
   },
   "extra": {
