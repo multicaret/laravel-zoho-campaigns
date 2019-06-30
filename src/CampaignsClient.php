@@ -57,9 +57,9 @@ class CampaignsClient implements CampaignsClientContract
      * @param int|null $fromIndex values are in number.
      * @param int|null $range     values are in number.
      *
-     * @return object
+     * @return mixed
      */
-    public function getMailingLists(string $sort = 'desc', int $fromIndex = null, int $range = null): object
+    public function getMailingLists(string $sort = 'desc', int $fromIndex = null, int $range = null)
     {
         return $this->postRequest('getmailinglists', [
             'sort' => $sort,
@@ -77,14 +77,14 @@ class CampaignsClient implements CampaignsClientContract
      * @param int|null $fromIndex  values are in number.
      * @param int|null $range      values are in number.
      *
-     * @return object
+     * @return mixed
      */
     public function getListAdvancedDetails(
         string $listKey,
         string $filterType = 'sentcampaigns',
         int $fromIndex = null,
         int $range = null
-    ): object {
+    ){
         return $this->postRequest('getlistadvanceddetails', [
             'listkey' => $listKey,
             'filtertype' => $filterType,
@@ -102,7 +102,7 @@ class CampaignsClient implements CampaignsClientContract
      * @param int|null $fromIndex values are in number.
      * @param int|null $range     values are in number.
      *
-     * @return object
+     * @return mixed
      */
     public function getListSubscribers(
         string $listKey,
@@ -110,7 +110,7 @@ class CampaignsClient implements CampaignsClientContract
         string $sort = 'desc',
         int $fromIndex = null,
         int $range = null
-    ): object {
+    ){
         return $this->postRequest('getlistsubscribers', [
             'listkey' => $listKey,
             'status' => $status,
@@ -141,9 +141,9 @@ class CampaignsClient implements CampaignsClientContract
      * @param string $listKey List Key to send a subscription mail to contacts.
      * @param int    $cvId    You will get cvid from @method getMailingLists().
      *
-     * @return object
+     * @return mixed
      */
-    public function getSegmentDetails(string $listKey, int $cvId): object
+    public function getSegmentDetails(string $listKey, int $cvId)
     {
         return $this->postRequest('getsegmentdetails', [
             'listkey' => $listKey,
@@ -156,9 +156,9 @@ class CampaignsClient implements CampaignsClientContract
      *
      * @param int $cvId You will get cvid from @method getMailingLists().
      *
-     * @return object
+     * @return mixed
      */
-    public function getSegmentContacts(int $cvId): object
+    public function getSegmentContacts(int $cvId)
     {
         return $this->postRequest('getsegmentcontacts', [
             'cvid' => $cvId,
@@ -172,13 +172,13 @@ class CampaignsClient implements CampaignsClientContract
      * @param string $newListName Give list name.
      * @param string $signUpForm  [public/private]
      *
-     * @return object
+     * @return mixed
      */
     public function updateListDetails(
         string $listKey,
         string $newListName,
         string $signUpForm = 'public'
-    ): object {
+    ){
         return $this->postRequest('updatelistdetails', [
             'listkey' => $listKey,
             'newlistname' => $newListName,
@@ -192,9 +192,9 @@ class CampaignsClient implements CampaignsClientContract
      * @param string $listKey        List Key to send a subscription mail to subscribers.
      * @param string $deleteContacts [on/off]
      *
-     * @return object
+     * @return mixed
      */
-    public function deleteMailingList(string $listKey, string $deleteContacts = 'off'): object
+    public function deleteMailingList(string $listKey, string $deleteContacts = 'off')
     {
         return $this->postRequest('deletemailinglist', [
             'listkey' => $listKey,
@@ -208,9 +208,9 @@ class CampaignsClient implements CampaignsClientContract
      * @param string $listKey List Key to send a subscription mail to subscribers
      * @param string $status  [active|unsub|bounce|spam]
      *
-     * @return object
+     * @return mixed
      */
-    public function listSubscribersCount(string $listKey, string $status = 'active'): object
+    public function listSubscribersCount(string $listKey, string $status = 'active')
     {
         return $this->postRequest('listsubscriberscount', [
             'listkey' => $listKey,
@@ -228,13 +228,13 @@ class CampaignsClient implements CampaignsClientContract
      * @param string $contactInfo Subscriber email with other fields. Format of this value depends on the request URL.
      * @param null   $sources     Subscriber source can be added.
      *
-     * @return object
+     * @return mixed
      */
     public function listSubscribe(
         string $listKey,
         string $contactInfo,
         $sources = null
-    ): object {
+    ){
         return $this->postRequest($this->responseFormat . DIRECTORY_SEPARATOR . 'listsubscribe', [
             'listkey' => $listKey,
             'contactinfo' => $contactInfo,
@@ -249,12 +249,12 @@ class CampaignsClient implements CampaignsClientContract
      * @param string $listKey     List Key to send a subscription mail to subscribers
      * @param string $contactInfo Provide email id to be moved to Do-Not-Mail registry.
      *
-     * @return object
+     * @return mixed
      */
     public function listUnsubscribe(
         string $listKey,
         string $contactInfo
-    ): object {
+    ){
         return $this->postRequest($this->responseFormat . DIRECTORY_SEPARATOR . 'listunsubscribe', [
             'listkey' => $listKey,
             'contactinfo' => $contactInfo,
@@ -268,11 +268,11 @@ class CampaignsClient implements CampaignsClientContract
      *
      * @param string $contactInfo Provide email id to be moved to Do-Not-Mail registry.
      *
-     * @return object
+     * @return mixed
      */
     public function contactDoNotMail(
         string $contactInfo
-    ): object {
+    ){
         return $this->postRequest($this->responseFormat . DIRECTORY_SEPARATOR . 'contactdonotmail', [
             'contactinfo' => $contactInfo,
         ]);
@@ -285,12 +285,12 @@ class CampaignsClient implements CampaignsClientContract
      * @param string $listKey  List Key to send a subscription mail to subscribers
      * @param string $emailIds Provide maximum of ten (10) EMAILID's comma (,) separately.
      *
-     * @return object
+     * @return mixed
      */
     public function addListSubscribersInBulk(
         string $listKey,
         string $emailIds
-    ): object {
+    ){
         return $this->postRequest('addlistsubscribersinbulk', [
             'listkey' => $listKey,
             'emailids' => $emailIds,
@@ -307,7 +307,7 @@ class CampaignsClient implements CampaignsClientContract
      * @param string $mode            'newlist'
      * @param string $listDescription Provide a description for your list.
      *
-     * @return object
+     * @return mixed
      */
     public function addListAndContacts(
         string $emailIds,
@@ -315,7 +315,7 @@ class CampaignsClient implements CampaignsClientContract
         string $signUpForm = 'public',
         string $mode = 'newlist',
         string $listDescription = ''
-    ): object {
+    ){
         return $this->postRequest('addlistandcontacts', [
             'emailids' => $emailIds,
             'listname' => $listName,
@@ -334,14 +334,14 @@ class CampaignsClient implements CampaignsClientContract
      * @param int    $fieldLength This lets you to set length of the field. Default value is 20.
      * @param string $type        xml (or) json
      *
-     * @return object
+     * @return mixed
      */
     public function addCustomField(
         string $fieldName,
         string $fieldType,
         int $fieldLength = 20,
         string $type = 'json'
-    ): object {
+    ){
         return $this->postRequest('custom/add', [
             'fieldname' => $fieldName,
             'fieldtype' => $fieldType,
@@ -361,7 +361,7 @@ class CampaignsClient implements CampaignsClientContract
      * @param string $socialValue Give a default value for the tag to be used in email content of social campaigns.
      * @param string $type        xml (or) json
      *
-     * @return object
+     * @return mixed
      */
     public function createMergeTag(
         string $tagType,
@@ -370,7 +370,7 @@ class CampaignsClient implements CampaignsClientContract
         string $mailValue = '',
         string $socialValue = '',
         string $type = 'json'
-    ): object {
+    ){
         return $this->postRequest('merge/create', [
             'tagtype' => $tagType,
             'fieldname' => $fieldName,
